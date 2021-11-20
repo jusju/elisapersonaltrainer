@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Add Workout</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<body>
+	<h1>Add workout</h1>
+	<div>
+		<form th:object="${workout}" th:action="@{/save}" action="#" method="post">
+			<label for="title">Title</label><br>
+			<input type="text" id="title" th:field="*{title}" /><br><br>
+			<label for="date">Date</label><br>
+			<input type="date" id="date" th:field="*{date}" /><br><br> 	
+			<label for="duration">Duration</label><br>
+			<input type="number" id="duration" th:field="*{duration}" /><br><br> 
+			<label for="focuslist">Focus</label><br> 
+			<select id="focuslist" th:field="*{focus}" class="form-control">
+			<option th:each="focus: ${focuses}" th:value="${focus.focusid}" th:text="${focus.name}"></option>
+			</select><br>
+			<input type="submit" value="Save"></input> 
+		</form>
+	</div>
+</body>
+</html>
